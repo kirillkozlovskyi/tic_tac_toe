@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           _buildPointTable(),
-          // _buildGrid(),
+          _buildGrid(),
           // _buildTurn(),
 
         ],
@@ -88,12 +88,47 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 )
-
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  Widget _buildGrid() {
+    return Expanded(
+      flex: 3,
+      child: GridView.builder(
+          itemCount: 9,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
+            crossAxisCount: 3,
+          ),
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {
+                _tapped(index);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Center(
+                  child: Text(index.toString(), style: const TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400 ),),
+                ),
+              ),
+            );
+          },
+      )
+    );
+  }
+  _tapped (int index) {
+
   }
 }
