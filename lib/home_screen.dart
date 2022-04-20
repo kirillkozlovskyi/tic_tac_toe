@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'alert_dialog.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -177,6 +178,72 @@ class _HomeScreenState extends State<HomeScreen> {
         _turnOfO = !_turnOfO;
         _filledBoxes += 1;
       }
+      _checkTheWinner();
     });
+  }
+  _checkTheWinner(){
+    // first row
+    if(_xOrOList[0] == _xOrOList[1] && _xOrOList[0] == _xOrOList[2] && _xOrOList[0] != '') {
+      _showAlertDialog('Winner', _xOrOList[0]);
+      return;
+    }
+    // second row
+    if(_xOrOList[3] == _xOrOList[4] && _xOrOList[3] == _xOrOList[5] && _xOrOList[3] != '') {
+      _showAlertDialog('Winner', _xOrOList[3]);
+      return;
+    }
+    // third row
+    if(_xOrOList[6] == _xOrOList[7] && _xOrOList[6] == _xOrOList[8] && _xOrOList[6] != '') {
+      _showAlertDialog('Winner', _xOrOList[6]);
+      return;
+    }
+    // first column
+    if(_xOrOList[0] == _xOrOList[3] && _xOrOList[0] == _xOrOList[6] && _xOrOList[0] != '') {
+      _showAlertDialog('Winner', _xOrOList[0]);
+      return;
+    }
+    // second column
+    if(_xOrOList[1] == _xOrOList[4] && _xOrOList[1] == _xOrOList[7] && _xOrOList[4] != '') {
+      _showAlertDialog('Winner', _xOrOList[1]);
+      return;
+    }
+    // second column
+    if(_xOrOList[2] == _xOrOList[5] && _xOrOList[2] == _xOrOList[8] && _xOrOList[2] != '') {
+      _showAlertDialog('Winner', _xOrOList[2]);
+      return;
+    }
+    // first diagonal
+    if(_xOrOList[0] == _xOrOList[4] && _xOrOList[0] == _xOrOList[8] && _xOrOList[0] != '') {
+      _showAlertDialog('Winner', _xOrOList[0]);
+      return;
+    }
+    // second diagonal
+    if(_xOrOList[4] == _xOrOList[4] && _xOrOList[4] == _xOrOList[6] && _xOrOList[2] != '') {
+      _showAlertDialog('Winner', _xOrOList[2]);
+      return;
+    }
+    if(_filledBoxes == 9) {
+      _showAlertDialog('Draw', '');
+    }
+  }
+
+  void _showAlertDialog(String title, String winner){
+    showAlertDialog(
+      title: title,
+      context: context,
+      content: winner == ''
+          ? 'The match ended in a draw'
+          : 'The winner is ${winner.toUpperCase()}',
+      defaultActionText: 'OK',
+      onOkPressed: () {
+        _clearBord();
+        Navigator.of(context).pop();
+      }
+    );
+    if (winner == 'o') {
+      _scoreO += 1;
+    } else if (winner == 'x') {
+      _scoreX += 1;
+    }
   }
 }
