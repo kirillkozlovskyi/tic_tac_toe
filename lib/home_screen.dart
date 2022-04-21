@@ -182,52 +182,43 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
   _checkTheWinner(){
-    print(_xOrOList);
     // first row
     if(_xOrOList[0] == _xOrOList[1] && _xOrOList[0] == _xOrOList[2] && _xOrOList[0] != '') {
-      print('first row');
       _showAlertDialog('Winner', _xOrOList[0]);
       return;
     }
     // second row
     if(_xOrOList[3] == _xOrOList[4] && _xOrOList[3] == _xOrOList[5] && _xOrOList[3] != '') {
-      print('second row');
       _showAlertDialog('Winner', _xOrOList[3]);
       return;
     }
     // third row
     if(_xOrOList[6] == _xOrOList[7] && _xOrOList[6] == _xOrOList[8] && _xOrOList[6] != '') {
-      print('third row');
       _showAlertDialog('Winner', _xOrOList[6]);
       return;
     }
     // first column
     if(_xOrOList[0] == _xOrOList[3] && _xOrOList[0] == _xOrOList[6] && _xOrOList[0] != '') {
-      print('first column');
       _showAlertDialog('Winner', _xOrOList[0]);
       return;
     }
     // second column
     if(_xOrOList[1] == _xOrOList[4] && _xOrOList[1] == _xOrOList[7] && _xOrOList[4] != '') {
-      print('second column');
       _showAlertDialog('Winner', _xOrOList[1]);
       return;
     }
     // third column
     if(_xOrOList[2] == _xOrOList[5] && _xOrOList[2] == _xOrOList[8] && _xOrOList[2] != '') {
-      print('third column');
       _showAlertDialog('Winner', _xOrOList[2]);
       return;
     }
     // first diagonal
     if(_xOrOList[0] == _xOrOList[4] && _xOrOList[0] == _xOrOList[8] && _xOrOList[0] != '') {
-      print('first diagonal');
       _showAlertDialog('Winner', _xOrOList[0]);
       return;
     }
     // second diagonal
     if(_xOrOList[2] == _xOrOList[4] && _xOrOList[2] == _xOrOList[6] && _xOrOList[2] != '') {
-      print('second diagonal');
       _showAlertDialog('Winner', _xOrOList[2]);
       return;
     }
